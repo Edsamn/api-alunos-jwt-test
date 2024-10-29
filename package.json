@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src",
     "test": "jest",
-    "build": "tsc && node ./dist"
+    "build": "tsc && node ./dist",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

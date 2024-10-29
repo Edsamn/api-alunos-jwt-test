@@ -1,5 +1,4 @@
 import {NextFunction, Request, Response} from "express";
-import db from "../database/prisma.connection";
 import * as jwt from "jsonwebtoken";
 
 async function authMiddleware(req: Request, res: Response, next: NextFunction) {

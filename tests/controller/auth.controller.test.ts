@@ -34,22 +34,22 @@ describe("Teste de Auth do controller auth.controller", () => {
 
   afterAll(async () => {
     const deleteStudent = await prismaConnection.students.findFirst({
-      where: { email: dataAuth.email },
+      where: {email: dataAuth.email},
     });
 
     const deleteUser = await prismaConnection.users.delete({
-      where: { studentId: deleteStudent?.id },
+      where: {studentId: deleteStudent?.id},
     });
 
     const deleteStudentUser = await prismaConnection.students.delete({
-      where: { id: deleteStudent?.id },
+      where: {id: deleteStudent?.id},
     });
   });
 
   test("O usuário digitou o login ou senha incorretos", async () => {
     const response = await request(app)
       .post("/auth")
-      .send({ email: "test@email.com", password: dataAuth.password })
+      .send({email: "test@email.com", password: dataAuth.password})
       .set("Content-Type", "application/json")
       .set("Accept", "application/json");
 
@@ -59,7 +59,7 @@ describe("Teste de Auth do controller auth.controller", () => {
   test("O usuário digitou tudo corretamente", async () => {
     const response = await request(app)
       .post("/auth")
-      .send({ email: dataAuth.email, password: dataAuth.password })
+      .send({email: dataAuth.email, password: dataAuth.password})
       .set("Content-Type", "application/json")
       .set("Accept", "application/json");
 

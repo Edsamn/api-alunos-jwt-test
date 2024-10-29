@@ -19,7 +19,7 @@ class UserController {
 
     try {
       if (!email || !password) {
-        return res.status(400).json({success: true, msg: "Required fields."});
+        return res.status(400).json({success: false, msg: "Required fields."});
       }
 
       const studentFind = await db.students.findUnique({
@@ -27,7 +27,7 @@ class UserController {
       });
 
       if (!studentFind) {
-        return res.status(400).json({success: true, msg: "Student not found."});
+        return res.status(400).json({success: false, msg: "Student not found."});
       }
 
       const hash = generateHash(password);
